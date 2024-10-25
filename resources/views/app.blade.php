@@ -84,7 +84,6 @@
             display: flex;
             align-items: center;
             justify-content: center; /* Centra todo el contenido del footer */
-            position: fixed; /* Mantiene el footer en la parte inferior */
             bottom: 0; /* Alineado al fondo */
             left: 0;
             right: 0;
