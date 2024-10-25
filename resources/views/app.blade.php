@@ -45,6 +45,7 @@
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
+            min-height: 100vh; /* Asegura que el cuerpo ocupe al menos toda la altura de la ventana */
         }
         /* Estilos personalizados para el navbar */
         .navbar-brand {
@@ -69,7 +70,48 @@
             margin-bottom: 10px; /* Espaciado inferior para separar del texto */
         }
 
-        /* Ajustes responsivos */
+        /* Footer que permanece en el fondo */
+        .footer {
+            background: white;
+            color: lightgray;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centra todo el contenido del footer */
+            position: fixed; /* Mantiene el footer en la parte inferior */
+            bottom: 0; /* Alineado al fondo */
+            left: 0;
+            right: 0;
+            padding: 10px;
+        }
+
+        /* Estilo del contenedor principal */
+        .ubicacion {
+            background-color: #3a3a3a; /* Gris oscuro */
+            width: 100vw;              /* Ocupa el 100% del ancho de la pantalla */
+            height: auto;             /* Altura automática */
+            display: flex;             /* Flex para dividir el espacio horizontalmente */
+            flex-direction: row;       /* Coloca las secciones en fila (izquierda y derecha) */
+            overflow: hidden;          /* Oculta el desbordamiento de las secciones */
+            margin-bottom: 50px;      /* Espacio para evitar que el contenido se superponga al footer */
+        }
+
+        /* Estilo de cada sección */
+        .sec-ubi {
+            flex: 1;                   /* Permite que cada sección ocupe el mismo espacio */
+            padding: 20px;            /* Espacio interno de cada sección */
+            color: white;             /* Color del texto en blanco */
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        
+        /* Ajuste responsivo para pantallas medianas */
+        @media (max-width: 1200px) {
+            .footer {
+                font-size: 50%; /* Ajusta este porcentaje según el tamaño deseado */
+            }
+        }
+
+        /* Ajuste responsivo para pantallas medianas a pequeñas */
         @media (min-width: 768px) {
             .navbar-brand {
                 flex-direction: row; /* Cambiar a fila en pantallas más grandes */
@@ -77,6 +119,20 @@
             .navbar .btn {
                 margin-left: auto; /* Alinear el botón a la derecha */
                 margin-top: 0; /* Eliminar el margen superior en pantallas grandes */
+            }
+        }
+        
+        /* Ajuste responsivo para pantallas pequeñas */
+        @media (max-width: 600px) {
+            .footer {
+                font-size: 40%;
+            }
+            .ubicacion {
+                flex-direction: column; /* Cambia a orientación vertical en pantallas pequeñas */
+                margin-bottom: 60px;    /* Aumentar el margen inferior para asegurarse de que el contenido no esté oculto */
+            }
+            .sec-ubi {
+                padding: 15px;          /* Ajuste del padding en pantallas pequeñas */
             }
         }
     </style>
@@ -104,5 +160,36 @@
     <div class="contenido m-4" style="margin-bottom:100px">
         @yield('contenido')
     </div>
+
+    <div class="ubicacion">
+        <div class="sec-ubi">
+            Encuéntranos 
+            <p>
+                <br>
+                <strong>Dirección</strong> <br>
+                Avenida Circuito Zacatecas No. 401 Col. Ciudad Gobierno, 98160 Zacatecas, Zac. <br><br>
+
+                <strong>Teléfono</strong> <br>
+                (492) 925 60 50<br><br>
+
+                <strong>Horario</strong> <br>
+                Lunes a viernes de 9:00 AM a 4:00 PM<br><br>
+
+                <i>Atención 24 horas, los 365 días del año en el edificio de la Dirección General de la Policía de Investigación</i><br><br>
+
+                <a href="https://www.fiscaliazacatecas.gob.mx/wp-content/uploads/2022/01/API_SIMPLIFICADO_17dic.pdf">Aviso de Privacidad</a> || 
+                <a href="https://www.fiscaliazacatecas.gob.mx/wp-content/uploads/2024/01/FGJEZ-Circular_01-2024.pdf">Días Inhábiles</a>
+            </p>
+        </div>
+        <div class="sec-ubi">
+            [add - mapa]
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-center text-center">
+            © Copyright 2019 - 2024 | Fiscalía General de Justicia del Estado de Zacatecas | Todos los derechos reservados
+        </div>
+    </footer>
 </body>
 </html>
