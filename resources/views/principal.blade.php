@@ -66,20 +66,22 @@
 </div>
 
 <div>
-    {{-- <h1>{{ $name->nombre }} {{ $arc ? 'Archivado' : '' }}</h1> --}}
     <div>
         <table id="vehirecu" class="table table-striped table-bordered">
             <tbody>
-                {{-- @foreach ($data as $indic) --}}
-                    {{-- @php
-                        $has_photos = \App\Models\foto::where('tabla_id', $tab )
-                            ->where('indic_id', $indic->id)
-                            ->exists();
-                    @endphp --}}
+                @for ($i = 0; $i < count($vehiculos); $i++)
                     <tr>
-
+                        <td>{{ $vehiculos[$i]['Marca'] }}</td>
+                        <td>{{ $vehiculos[$i]['Submarca'] }}</td>
+                        <td>{{ $vehiculos[$i]['Modelo'] }}</td>
+                        <td>{{ $vehiculos[$i]['Serie'] }}</td>
+                        <td>{{ $vehiculos[$i]['Ubicacion'] }}</td>
+                        <td>{{ $vehiculos[$i]['Fecha'] }}</td>
+                        <td>
+                            <img src="{{ asset('Vehiculos/'. $i+1) .'.jpg' }}" width="100px" height="80px">
+                        </td>
                     </tr>
-                {{-- @endforeach --}}
+                @endfor
             </tbody>
         </table>
     </div>
@@ -87,7 +89,29 @@
     <script>
         new DataTable('#vehirecu', {
             scrollY: '100%',
-            columns: [],
+            columns: [
+                {
+                    title: 'Marca'
+                },
+                {
+                    title: 'Submarca'
+                },
+                {
+                    title: 'Modelo'
+                },
+                {
+                    title: 'Serie'
+                },
+                {
+                    title: 'Ubicacion'
+                },
+                {
+                    title: 'Fecha'
+                },
+                {
+                    title: 'Fotografia'
+                },
+            ],
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",

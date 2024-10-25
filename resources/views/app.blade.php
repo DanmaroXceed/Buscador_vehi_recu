@@ -157,7 +157,7 @@
         <div class="container-fluid px-4 px-md-5">
             <a class="navbar-brand d-flex align-items-center">
                 <img src="{{ asset('/logoweb-navbar.png') }}" alt="Logo" class="me-2">
-                <h1 class="h4 mb-0 p-2">Busqueda de Cédulas de Identificación</h1>
+                <h1 class="h4 mb-0 p-2">Busqueda de Vehiculos Recuperados</h1>
             </a>
             <!-- Alinear el botón a la derecha en pantallas más grandes -->
             <div class="d-none d-md-block"> <!-- Ocultar en móviles y mostrar en desktop -->
@@ -191,8 +191,7 @@
 
                 <i>Atención 24 horas, los 365 días del año en el edificio de la Dirección General de la Policía de Investigación</i><br><br>
 
-                <a href="https://www.fiscaliazacatecas.gob.mx/wp-content/uploads/2022/01/API_SIMPLIFICADO_17dic.pdf">Aviso de Privacidad</a> || 
-                <a href="https://www.fiscaliazacatecas.gob.mx/wp-content/uploads/2024/01/FGJEZ-Circular_01-2024.pdf">Días Inhábiles</a>
+                <a href="https://www.fiscaliazacatecas.gob.mx/wp-content/uploads/2022/01/API_SIMPLIFICADO_17dic.pdf">Aviso de Privacidad</a>
             </p>
         </div>
         <div class="sec-ubi">
