@@ -38,6 +38,13 @@
 
     <!-- Vincula los íconos de Bootstrap Icons versión 1.11.3 para utilizar en el diseño de la página -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    {{-- Leaflet CSS - Mapa --}}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+    {{-- Leaflet JS --}}
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     {{-- @livewireStyles --}}
 
     <style>
@@ -82,6 +89,7 @@
             left: 0;
             right: 0;
             padding: 10px;
+            z-index: 10;
         }
 
         /* Estilo del contenedor principal */
@@ -102,6 +110,11 @@
             color: white;             /* Color del texto en blanco */
             margin-left: 5%;
             margin-right: 5%;
+        }
+
+        #map { 
+            height: 100%; 
+            z-index: 9;
         }
         
         /* Ajuste responsivo para pantallas medianas */
@@ -134,6 +147,7 @@
             .sec-ubi {
                 padding: 15px;          /* Ajuste del padding en pantallas pequeñas */
             }
+            #map { height: 300px; }
         }
     </style>
 
@@ -182,7 +196,7 @@
             </p>
         </div>
         <div class="sec-ubi">
-            [add - mapa]
+            <div id="map"></div>
         </div>
     </div>
 
@@ -192,4 +206,26 @@
         </div>
     </footer>
 </body>
+
+<script>
+    // Instancia del mapa
+    var map = L.map('map').setView([22.780494, -102.618168], 16);
+
+    // Agregar capas al mapa
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19
+    }).addTo(map);
+
+    // Agregar marcador al mapa
+    var marker = L.marker([22.779129, -102.618104]).addTo(map);
+
+    // Popup en marcador
+    marker.bindPopup("<b>Fiscalia General de Justicia del Estado de Zacatecas</b><br>Avenida Circuito Zacatecas No. 401 Col. <br>Ciudad Gobierno, 98160 <br>Zacatecas, Zac.").openPopup();
+
+    // function onMapClick(e) {
+    //     alert("You clicked the map at " + e.latlng);
+    // }
+
+    // map.on('click', onMapClick);
+</script>
 </html>
