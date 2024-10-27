@@ -69,16 +69,20 @@
     <div>
         <table id="vehirecu" class="table table-striped table-bordered">
             <tbody>
-                @for ($i = 0; $i < count($vehiculos); $i++)
+                @foreach($vehiculos as $v)
                     <tr>
-                        <td>{{ $vehiculos[$i]['Marca'] }}</td>
-                        <td>{{ $vehiculos[$i]['Submarca'] }}</td>
-                        <td>{{ $vehiculos[$i]['Modelo'] }}</td>
-                        <td>{{ $vehiculos[$i]['Serie'] }}</td>
-                        <td>{{ $vehiculos[$i]['Ubicacion'] }}</td>
-                        <td>{{ $vehiculos[$i]['Fecha'] }}</td>
+                        <td>{{ $v->marca }}</td>
+                        <td>{{ $v->submarca }}</td>
+                        <td>{{ $v->modelo }}</td>
+                        <td>{{ $v->color }}</td>
+                        <td>{{ $v->serie }}</td>
+                        <td>{{ $v->placas }}</td>
                         <td>
-                            <img src="{{ asset('Vehiculos/'. $i+1) .'.jpg' }}" width="100px" height="80px">
+                            @foreach ($fotos as $f)
+                                @if($f->vehiculo_id == $f->id)
+                                <img src="{{ asset('Vehiculos/$f->vehiculo_id/$f->url') }}" width="100px" height="80px">
+                                @endif
+                            @endforeach
                         </td>
                     </tr>
                 @endfor
@@ -100,13 +104,13 @@
                     title: 'Modelo'
                 },
                 {
+                    title: 'Color'
+                },
+                {
                     title: 'Serie'
                 },
                 {
-                    title: 'Ubicacion'
-                },
-                {
-                    title: 'Fecha'
+                    title: 'Placas'
                 },
                 {
                     title: 'Fotografia'
