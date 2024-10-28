@@ -79,13 +79,13 @@
                         <td>{{ $v->placas }}</td>
                         <td>
                             @foreach ($fotos as $f)
-                                @if($f->vehiculo_id == $f->id)
-                                <img src="{{ asset('Vehiculos/$f->vehiculo_id/$f->url') }}" width="100px" height="80px">
+                                @if($f->vehiculo_id == $v->id)
+                                    <img src="{{ asset("Vehiculos/{$f->vehiculo_id}/{$f->url}") }}" width="100px" height="80px">
                                 @endif
                             @endforeach
                         </td>
                     </tr>
-                @endfor
+                @endforeach
             </tbody>
         </table>
     </div>

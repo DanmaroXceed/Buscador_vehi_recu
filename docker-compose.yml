@@ -13,8 +13,8 @@ services:
             - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
         networks:
             - vehi-recu-Net
-        depends_on:
-            - db  # Añadimos una dependencia al servicio de base de datos
+        # depends_on:
+        #     - db  # Añadimos una dependencia al servicio de base de datos
 
     server:
         image: nginx:alpine
@@ -31,24 +31,24 @@ services:
         networks:
             - vehi-recu-Net
 
-    db:
-        image: mysql:8.0
-        container_name: mysql-vehi-recu
-        restart: unless-stopped
-        ports:
-            - "3306:3306"
-        environment:
-            MYSQL_ROOT_PASSWORD: secret
-            MYSQL_DATABASE: vr
-            MYSQL_USER: vradmin
-            MYSQL_PASSWORD: vradmin
-        volumes:
-            - db_data:/var/lib/mysql
-        networks:
-            - vehi-recu-Net
+#     db:
+#         image: mysql:8.0
+#         container_name: mysql-vehi-recu
+#         restart: unless-stopped
+#         ports:
+#             - "3306:3306"
+#         environment:
+#             MYSQL_ROOT_PASSWORD: secret
+#             MYSQL_DATABASE: vr
+#             MYSQL_USER: vradmin
+#             MYSQL_PASSWORD: vradmin
+#         volumes:
+#             - db_data:/var/lib/mysql
+#         networks:
+#             - vehi-recu-Net
 
-volumes:
-  db_data:
+# volumes:
+#   db_data:
 
 networks:
     vehi-recu-Net:
