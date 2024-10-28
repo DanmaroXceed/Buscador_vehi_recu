@@ -156,7 +156,7 @@
         <div class="container-fluid px-4 px-md-5">
             <a class="navbar-brand d-flex align-items-center">
                 <img src="{{ asset('/logoweb-navbar.png') }}" alt="Logo" class="me-2">
-                <h1 class="h4 mb-0 p-2">Busqueda de Vehiculos Recuperados</h1>
+                <h1 class="h4 mb-0 p-2">Búsqueda de Vehículos Recuperados</h1>
             </a>
             <!-- Alinear el botón a la derecha en pantallas más grandes -->
             <div class="d-none d-md-block"> <!-- Ocultar en móviles y mostrar en desktop -->

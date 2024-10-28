@@ -5,7 +5,7 @@
     .rectangulo {
         width: 100%;
         max-width: 1000px;
-        height: 300px;
+        height: 200px;
         background: linear-gradient(180deg, #001a33, #00284d);
         border-radius: 10px; /* Esquinas ligeramente redondeadas */
         margin: 0 auto; /* Centrar horizontalmente */
@@ -23,11 +23,11 @@
     }
 
     .rectangulo p {
-        font-size: 1rem; /* Tamaño de fuente más pequeño para el primer párrafo */
+        font-size: 1.3rem; /* Tamaño de fuente más pequeño para el primer párrafo */
     }
 
     .rectangulo h1 {
-        font-size: 3rem; /* Tamaño de fuente más grande para el segundo párrafo */
+        font-size: 2.8rem; /* Tamaño de fuente más grande para el segundo párrafo */
     }
 
     @media (max-width: 768px) {
@@ -78,11 +78,28 @@
                         <td>{{ $v->serie }}</td>
                         <td>{{ $v->placas }}</td>
                         <td>
-                            @foreach ($fotos as $f)
-                                @if($f->vehiculo_id == $v->id)
-                                    <img src="{{ asset("Vehiculos/{$f->vehiculo_id}/{$f->url}") }}" width="100px" height="80px">
-                                @endif
-                            @endforeach
+                            <!-- Carrusel de Fotos -->
+                            <div id="carouselFotos{{ $v->id }}" class="carousel slide" data-bs-ride="carousel" style="width: 150px; height: 100px;">
+                                <div class="carousel-inner">
+                                    @foreach ($fotos as $f)
+                                        @if($f->vehiculo_id == $v->id)
+                                            <div class="carousel-item active">
+                                                <img src="{{ asset("Vehiculos/{$f->vehiculo_id}/{$f->url}") }}" class="d-block w-100" style="object-fit: cover; width: 150px; height: 100px;" alt="Foto de Vehículo">
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+
+                                <!-- Controles del Carrusel -->
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselFotos{{ $v->id }}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselFotos{{ $v->id }}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
