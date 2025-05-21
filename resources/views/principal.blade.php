@@ -129,6 +129,41 @@
             </table>
         </div>
 
+        <!-- Modal para mostrar imagen en grande -->
+        <div class="modal fade" id="modalImagen" tabindex="-1" aria-labelledby="modalImagenLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content bg-dark text-white">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="modalImagenGrande" src="" class="img-fluid rounded shadow" alt="Imagen ampliada">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Espera a que el DOM esté completamente cargado
+            document.addEventListener('DOMContentLoaded', function() {
+                // Buscar todas las imágenes dentro de los carruseles
+                const imagenes = document.querySelectorAll('.carousel-item img');
+
+                imagenes.forEach(img => {
+                    img.style.cursor = 'pointer'; // Que el cursor muestre que es clickeable
+
+                    img.addEventListener('click', function() {
+                        const modalImg = document.getElementById('modalImagenGrande');
+                        modalImg.src = this.src;
+                        const modal = new bootstrap.Modal(document.getElementById('modalImagen'));
+                        modal.show();
+                    });
+                });
+            });
+        </script>
+
+
         <script>
             new DataTable('#vehirecu', {
                 scrollY: '100%',
