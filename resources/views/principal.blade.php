@@ -134,6 +134,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content bg-dark text-white">
                     <div class="modal-header border-0">
+                        <h5 class="modal-title" id="modalImagenLabel">Vista ampliada</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Cerrar"></button>
                     </div>
@@ -145,66 +146,66 @@
         </div>
 
         <script>
-            // Espera a que el DOM esté completamente cargado
-            document.addEventListener('DOMContentLoaded', function() {
-                // Buscar todas las imágenes dentro de los carruseles
-                const imagenes = document.querySelectorAll('.carousel-item img');
+            $(document).ready(function() {
+                // Inicializar DataTable
+                const tabla = $('#vehirecu').DataTable({
+                    scrollY: '100%',
+                    columns: [{
+                            title: 'Marca'
+                        },
+                        {
+                            title: 'Submarca'
+                        },
+                        {
+                            title: 'Modelo'
+                        },
+                        {
+                            title: 'Color'
+                        },
+                        {
+                            title: 'Serie'
+                        },
+                        {
+                            title: 'Placas'
+                        },
+                        {
+                            title: 'Fotografía'
+                        }
+                    ],
+                    language: {
+                        "decimal": "",
+                        "emptyTable": "No hay información",
+                        "info": "Mostrando <strong>_START_</strong> a <strong>_END_</strong> de <strong>_TOTAL_</strong> Entradas",
+                        "infoEmpty": "Mostrando <strong>0</strong> a <strong>0</strong> de <strong>0</strong> Entradas",
+                        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                        "lengthMenu": "Mostrar _MENU_ Entradas",
+                        "loadingRecords": "Cargando...",
+                        "processing": "Procesando...",
+                        "search": "Buscar:",
+                        "zeroRecords": "Sin resultados encontrados"
+                    },
+                    order: []
+                });
 
-                imagenes.forEach(img => {
-                    img.style.cursor = 'pointer'; // Que el cursor muestre que es clickeable
-
-                    img.addEventListener('click', function() {
-                        const modalImg = document.getElementById('modalImagenGrande');
-                        modalImg.src = this.src;
+                // Función para activar evento click en imágenes
+                function activarModalImagen() {
+                    $('.carousel-item img').css('cursor', 'pointer').off('click').on('click', function() {
+                        const src = $(this).attr('src');
+                        $('#modalImagenGrande').attr('src', src);
                         const modal = new bootstrap.Modal(document.getElementById('modalImagen'));
                         modal.show();
                     });
+                }
+
+                // Activar al inicio
+                activarModalImagen();
+
+                // Activar cada vez que cambie la página del DataTable
+                tabla.on('draw', function() {
+                    activarModalImagen();
                 });
             });
         </script>
 
-
-        <script>
-            new DataTable('#vehirecu', {
-                scrollY: '100%',
-                columns: [{
-                        title: 'Marca'
-                    },
-                    {
-                        title: 'Submarca'
-                    },
-                    {
-                        title: 'Modelo'
-                    },
-                    {
-                        title: 'Color'
-                    },
-                    {
-                        title: 'Serie'
-                    },
-                    {
-                        title: 'Placas'
-                    },
-                    {
-                        title: 'Fotografia'
-                    },
-                ],
-                language: {
-                    "decimal": "",
-                    "emptyTable": "No hay información",
-                    "info": "Mostrando <strong>_START_</strong> a <strong>_END_</strong> de <strong>_TOTAL_</strong> Entradas",
-                    "infoEmpty": "Mostrando <strong>0</strong> a <strong>0</strong> de <strong>0</strong> Entradas",
-                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ Entradas",
-                    "loadingRecords": "Cargando...",
-                    "processing": "Procesando...",
-                    "search": "Buscar:",
-                    "zeroRecords": "Sin resultados encontrados",
-                },
-                order: []
-            });
-        </script>
     </div>
 @endsection
