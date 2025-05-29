@@ -73,10 +73,14 @@
         }
     </style>
 
-    <div class="rectangulo text-center text-white">
+    {{-- <div class="rectangulo text-center text-white">
         <p>CONSULTA DE</p>
         <br>
         <h1>VEHÍCULOS RECUPERADOS</h1>
+    </div> --}}
+
+    <div style="width: 100%; overflow: hidden;">
+        <img src={{ asset('cintillo.png') }} alt="Descripción de la imagen" style="width: 100%; height: auto; display: block;">
     </div>
 
     <div>
