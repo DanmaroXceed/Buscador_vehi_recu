@@ -136,7 +136,7 @@ class ActualizarTablaVehiculos20251106 extends Seeder
                 });
             } catch (\Exception $e) {
                 // 7. Captura errores, hace rollback y continúa con siguiente fila
-                Log::error("Error procesando serie {$data[4]}: " . $e->getMessage());
+                Log::error("Error procesando registro {$data[0]}: " . $e->getMessage());
                 continue;
             }
         }
