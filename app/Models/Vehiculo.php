@@ -24,7 +24,16 @@ class Vehiculo extends Model
         'mp',
         'cui',
         'observaciones',
-        'estado'
+        'estado',
+        'area',
+        'fecha_parte',
+        'tipo_v',
+        'origen',
+        'municipio',
+        'calle',
+        'fecha_robo',
+        'rec_mismo_dia',
+        'alt_rem',
     ];
 
     public function fotos()
