@@ -106,7 +106,7 @@ class ActualizarTablaVehiculos20251106 extends Seeder
 
                     // 6. Registrar fotos y mover archivos
                     $baseActPath = public_path('fotos');
-                    $newDir      = public_path("Vehiculos/_{$vehiculo->id}");
+                    $newDir      = public_path("Vehiculos/{$vehiculo->id}");
 
                     // Crear carpeta si no existe
                     if (!File::exists($newDir)) {
