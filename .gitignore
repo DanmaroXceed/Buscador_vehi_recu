@@ -22,3 +22,5 @@ yarn-error.log
 /.zed
 Dockerfile
 docker-compose.yml
+/dbdata
+/public/Vehiculos
