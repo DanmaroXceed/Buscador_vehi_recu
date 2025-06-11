@@ -24,9 +24,9 @@ return new class extends Migration
             $table->string('marca', 20);
             $table->string('submarca', 20);
             $table->string('modelo', 20);
-            $table->string('color', 20);
+            $table->string('color', 50);
             $table->string('mp', 50);
-            $table->string('cui', 20);
+            $table->string('cui', 100);
             $table->text('observaciones')->nullable();
             $table->boolean('estado')->default(true);
 
